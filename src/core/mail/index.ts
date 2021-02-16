@@ -1,0 +1,61 @@
+import sgMail from '@sendgrid/mail';
+import dotenv from 'dotenv';
+import confirmation from './templates/confirmation';
+import passwordReset from './templates/pwReset';
+import passwordModif from './templates/pwModif';
+
+dotenv.config();
+const API_KEY = process.env.SENDGRID_API_KEY;
+
+export async function send(to: string, subject: string, body: string): Promise<boolean> {
+    const msg = {
+        to,
+        from: 'kevin.moreau@efrei.net',
+        subject,
+        html: body,
+    };
+
+    if (!API_KEY) {
+        console.log('API_KEY not found');
+        return false;
+    }
+    sgMail.setApiKey(API_KEY);
+
+    try {
+        await sgMail.send(msg);
+        return Promise.resolve(true);
+    } catch (error) {
+        if (error.response) {
+            console.error(error.response.body);
+        }
+        return Promise.reject(error);
+    }
+}
+
+export async function sendConfirmation(
+    to: string,
+    options: { nickname: string },
+): Promise<boolean> {
+    return send(to, 'Account successfully created', confirmation(options));
+}
+
+export async function sendPasswordReset(
+    to: string,
+    options: { nickname: string; token: string },
+): Promise<boolean> {
+    return send(to, 'Reset your password', passwordReset(options));
+}
+
+export async function sendPasswordModif(
+    to: string,
+    options: { nickname: string },
+): Promise<boolean> {
+    return send(to, 'Password changed', passwordModif(options));
+}
+
+export default {
+    send,
+    sendConfirmation,
+    sendPasswordReset,
+    sendPasswordModif,
+};
