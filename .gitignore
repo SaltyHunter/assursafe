@@ -115,4 +115,3 @@ temp/
 .database.env
 docker-cmd.txt
 yarn-error.log
-README.md

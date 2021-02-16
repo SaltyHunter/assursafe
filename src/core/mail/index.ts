@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import sgMail from '@sendgrid/mail';
 import dotenv from 'dotenv';
 import confirmation from './templates/confirmation';
@@ -34,7 +35,7 @@ export async function send(to: string, subject: string, body: string): Promise<b
 
 export async function sendConfirmation(
     to: string,
-    options: { nickname: string },
+    options: { username: string },
 ): Promise<boolean> {
     return send(to, 'Account successfully created', confirmation(options));
 }
