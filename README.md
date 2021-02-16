@@ -1,10 +1,10 @@
-# patchakwak's API 
+# patchakwak's API Version BETA 0.2
 
 # Authentification : 
 
 LOCAL : S'inscrire POST : http://localhost:8080/api/authenticate/signup
 
-PROD : S'inscrire POST : https:/patchakwak.herokuapp.com/api/authenticate/signup
+PROD : S'inscrire POST : https://patchakwak.herokuapp.com/api/authenticate/signup
 
     {
         "username": ,
@@ -18,7 +18,7 @@ PROD : S'inscrire POST : https:/patchakwak.herokuapp.com/api/authenticate/signup
     
 LOCAL : Se connecter POST : http://localhost:8080/api/authenticate/signin
 
-PROD : Se connecter POST : https:/patchakwak.herokuapp.com/api/authenticate/signin
+PROD : Se connecter POST : https://patchakwak.herokuapp.com/api/authenticate/signin
 
 
     {
@@ -30,11 +30,11 @@ PROD : Se connecter POST : https:/patchakwak.herokuapp.com/api/authenticate/sign
 
 LOCAL : Voir son profil GET : http://localhost:8080/api/users/{uuid}
 
-PROD : Voir son profil GET : https://patchakwak.herokuapp.com//api/users/{uuid}
+PROD : Voir son profil GET : https://patchakwak.herokuapp.com/api/users/{uuid}
 
 LOCAL : Modifier son profil PUT : http://localhost:8080/api/users/{uuid}
 
-PROD : Modifier son profil PUT : https://patchakwak.herokuapp.com//api/users/{uuid}
+PROD : Modifier son profil PUT : https://patchakwak.herokuapp.com/api/users/{uuid}
 
     {
         "username": ,
@@ -46,23 +46,23 @@ PROD : Modifier son profil PUT : https://patchakwak.herokuapp.com//api/users/{uu
         "passwordConfirmation":
     }
 
-# Bucket :
+# Dossier :
 
 LOCAL : Voir ses dossiers  GET : http://localhost:8080/api/users/{uuid}/buckets
 
-PROD : Voir ses dossiers GET : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers
+PROD : Voir ses dossiers GET : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers
 
 LOCAL : Poster un dossier POST : http://localhost:8080/api/users/{uuid}/dossiers
 
-PROD : Poster un dossier POST : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers
+PROD : Poster un dossier POST : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers
 
     {
         "name":
     }
 
-LOCAL : Modifier son file PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}
+LOCAL : Modifier son dossier PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}
 
-PROD : Modifier son file PUT : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers/{id_dossier}
+PROD : Modifier son dossier PUT : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}
 
     {
         "name":
@@ -70,17 +70,17 @@ PROD : Modifier son file PUT : https://patchakwak.herokuapp.com//api/users/{uuid
     
 LOCAL : Supprimer son file DELETE : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}
 
-PROD : Supprimer son file DELETE : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers/{id_dossier}
+PROD : Supprimer son file DELETE : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}
 
-# Blob :
+# Fichier :
 
-LOCAL : Voir un dossier GET : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/blobs/{id_file}
+LOCAL : Voir un fichier GET : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
-PROD : Voir un dossier GET : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
+PROD : Voir un fichier GET : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
-LOCAL : Poster un dossier POST : http://localhost:8080/api/users/{uuid}/dossiers/files
+LOCAL : Poster un fichier POST : http://localhost:8080/api/users/{uuid}/dossiers/files
 
-PROD : Poster un dossier POST : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers/files
+PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/files
 
     {
         "name":
@@ -90,9 +90,9 @@ PROD : Poster un dossier POST : https://patchakwak.herokuapp.com//api/users/{uui
         "size":
     }
 
-LOCAL : Modifier son file PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file_}
+LOCAL : Modifier son fichier PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file_}
 
-PROD : Modifier son file PUT : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
+PROD : Modifier son fichier PUT : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
     {
         "name":
@@ -102,6 +102,6 @@ PROD : Modifier son file PUT : https://patchakwak.herokuapp.com//api/users/{uuid
         "size":
     }
     
-LOCAL : Supprimer son file DELETE : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
+LOCAL : Supprimer son fichier DELETE : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
-PROD : Supprimer son file DELETE : https://patchakwak.herokuapp.com//api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
+PROD : Supprimer son fichier DELETE : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}

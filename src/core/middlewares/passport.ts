@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
@@ -14,15 +15,15 @@ dotenv.config()
 passport.use(
   new LocalStrategy(
     {
-      usernameField: 'nickname',
+      usernameField: 'username',
       passwordField: 'password',
     },
-    async (nickname, password, next) => {
+    async (username, password, next) => {
       try {
-        const user = await User.findOne({ nickname })
+        const user = await User.findOne({ username })
 
         if (!user) {
-          next(`Sorry username ${nickname} dosen't exist`, null)
+          next(`Sorry username ${username} dosen't exist`, null)
           return
         }
 

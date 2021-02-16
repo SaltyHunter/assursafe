@@ -26,8 +26,6 @@ api.post('/signup', async (req: Request, res: Response) => {
     if (password !== passwordConfirmation) {
       throw new Error("Password doesn't match")
     }
-    await sendConfirmation(mail, { username })
-
     const user = new User()
 
     user.username = username
@@ -41,6 +39,7 @@ api.post('/signup', async (req: Request, res: Response) => {
     const payload = { id: user.id, username }
     const token = jwt.sign(payload, process.env.JWT_ENCRYPTION as string)
     res.status(CREATED.status).json(success(user, { token }))
+    await sendConfirmation(mail, { username })
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
   }
@@ -48,16 +47,18 @@ api.post('/signup', async (req: Request, res: Response) => {
 
 api.post('/signin', async (req: Request, res: Response) => {
   const authenticate = passport.authenticate('local', { session: false }, (errorMessage, user) => {
-    if (errorMessage) {
-      res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, new Error(errorMessage)))
-      return
-    }
-
-    const payload = { id: user.id, username: user.username }
-    const token = jwt.sign(payload, process.env.JWT_ENCRYPTION as string)
-    res.status(OK.status).json(success(user, { token }))
+    try {
+      if (errorMessage) {
+        res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, new Error(errorMessage)))
+        return
+      }
+      const payload = { id: user.id, username: user.username }
+      const token = jwt.sign(payload, process.env.JWT_ENCRYPTION as string)
+      res.status(OK.status).json(success(user, { token }))
+      } catch (err) {
+        res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
+      }
   })
-
   authenticate(req, res)
 })
 
