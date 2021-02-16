@@ -9,7 +9,7 @@ function confirmation({ username }: { username: string }): string {
             <mj-section>
               <mj-column>
                 <mj-text font-size="24px" font-weight="bold" color="#2386C8" font-family="helvetica">
-                  Bienvenue sur mys3 : ${username}!
+                  Bienvenue sur AssurSafe : ${username}!
                 </mj-text>
                 <mj-text font-size="20px" color="#2386C8" font-family="helvetica">
                   Votre compte à bien été créer !
