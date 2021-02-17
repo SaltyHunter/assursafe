@@ -98,9 +98,9 @@ LOCAL : Voir un fichier GET : http://localhost:8080/api/users/{uuid}/dossiers/{i
 
 PROD : Voir un fichier GET : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
-LOCAL : Poster un fichier POST : http://localhost:8080/api/users/{uuid}/dossiers/files
+LOCAL : Poster un fichier POST : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files
 
-PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/files
+PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files
 
     {
         "name":
