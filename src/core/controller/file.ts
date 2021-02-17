@@ -46,6 +46,7 @@ api.post('/', async (req: Request, res: Response) => {
       const file = new File()
   
       file.name = name;
+      file.dossier = dossier;
       file.mimetype = mimetype;
       file.size = size;
       file.content = content;
