@@ -1,12 +1,22 @@
 # patchakwak's API Version BETA 0.4
 
+# Configuration du .env
+
 Configuration du .env : 
 
 HOST=
+
 PORT=
+
 DATABASE_URL=
+
 JWT_ENCRYPTION=
+
 SENDGRID_API_KEY=
+
+# Gestion des mails : SENDGRID :
+
+Envoie de mail lors de la création d'un utilisateur, et suppression d'un utilisateur.
 
 # Authentification : 
 
@@ -54,6 +64,10 @@ PROD : Modifier son profil PUT : https://patchakwak.herokuapp.com/api/users/{uui
         "passwordConfirmation":
     }
 
+LOCAL : Supprimer son profil DEL : http://localhost:8080/api/users/{uuid}
+
+PROD : Supprimer son profil DEL : https://patchakwak.herokuapp.com/api/users/{uuid}
+
 # Dossier :
 
 LOCAL : Voir ses dossiers  GET : http://localhost:8080/api/users/{uuid}/buckets
@@ -76,9 +90,9 @@ PROD : Modifier son dossier PUT : https://patchakwak.herokuapp.com/api/users/{uu
         "name":
     }
     
-LOCAL : Supprimer son file DELETE : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}
+LOCAL : Supprimer son dossier DELETE : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}
 
-PROD : Supprimer son file DELETE : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}
+PROD : Supprimer son dossier DELETE : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}
 
 # Fichier :
 
@@ -98,7 +112,7 @@ PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid
         "size":
     }
 
-LOCAL : Modifier son fichier PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file_}
+LOCAL : Modifier son fichier PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
 PROD : Modifier son fichier PUT : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 

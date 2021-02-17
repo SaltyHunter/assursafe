@@ -42,14 +42,13 @@ api.post('/', async (req: Request, res: Response) => {
         throw new Error(`Buck ${dossierId } doens't exist`)
       }
 
-      const { name, mimetype, size, path } = req.body
+      const { name, mimetype, size } = req.body
       const file = new File()
   
       file.name = name;
       file.mimetype = mimetype;
       file.size = size;
       file.dossier = dossier;
-      file.path = path;  
       await file.save()
   
       res.status(CREATED.status).json(success(file))
@@ -62,12 +61,11 @@ api.post('/', async (req: Request, res: Response) => {
     try {
       const { id } = req.params
   
-      const { name, mimetype, size, path } = req.body
+      const { name, mimetype, size } = req.body
   
       await File.update({ id: id }, { name: name })
       await File.update({ id: id }, { mimetype: mimetype })
       await File.update({ id: id }, { size: size })
-      await File.update({ id: id }, { path: path })
 
       const file = await File.findOne({ where: { id: id } })
   

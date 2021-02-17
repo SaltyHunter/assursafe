@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import dotenv from 'dotenv'
 import { createConnection, Connection } from 'typeorm'
 import User from './User'

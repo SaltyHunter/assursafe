@@ -9,7 +9,7 @@ function pwReset({ username, token }: { username: string; token: string }): stri
           <mj-section>
             <mj-column>
               <mj-text font-size="24px" font-weight="bold" color="rgba(101,225,87,1)" font-family="helvetica">
-                Bonjour ${username}!
+                Bonjour ${username} !
               </mj-text>
               <mj-text font-size="20px" color="rgba(101,225,87,1)" font-family="helvetica">
                 Vous pouvez réinitialiser votre mot de passe ici : $(url)

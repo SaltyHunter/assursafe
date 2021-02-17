@@ -24,9 +24,6 @@ import {
     name!: string
 
     @Column({ nullable: false })
-    path!: string
-
-    @Column({ nullable: false })
     mimetype!: string
 
     @Column({ nullable: false })
@@ -41,7 +38,7 @@ import {
     @ManyToOne(() => Dossier, (dossier: Dossier) => dossier.id, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'dossier_id' })
     dossier!: Dossier
-    
+
     /**
      * Methods
      */
