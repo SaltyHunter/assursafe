@@ -104,7 +104,6 @@ PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid
 
     {
         "name":,
-        "path":,
         "mimetype":,
         "dossier":,
         "size":
@@ -116,7 +115,6 @@ PROD : Modifier son fichier PUT : https://patchakwak.herokuapp.com/api/users/{uu
 
     {
         "name":,
-        "path":,
         "mimetype":,
         "dossier":,
         "size":
