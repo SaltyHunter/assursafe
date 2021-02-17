@@ -11,7 +11,7 @@ api.get('/', (req: Request, res: Response) => {
     hello: "From patchakwak's Api",
     meta: {
       status: 'running',
-      version: 'BETA 0.3',
+      version: 'BETA 0.4',
     },
   })
 })

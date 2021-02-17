@@ -4,7 +4,6 @@ import { isEmpty } from 'lodash'
 import { error, success } from '../../core/helpers/response'
 import { BAD_REQUEST, CREATED, OK } from '../../core/constants/api'
 import jwt from 'jsonwebtoken'
-
 import User from '../../core/models/User'
 import passport from 'passport'
 import { sendConfirmation } from '@/core/mail'

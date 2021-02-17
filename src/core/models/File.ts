@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -17,6 +18,9 @@ import {
     id!: string
   
     @Column({ nullable: false })
+    dossier_id!: string
+
+    @Column({ nullable: false ,unique: true })
     name!: string
 
     @Column({ nullable: false })
@@ -34,10 +38,10 @@ import {
     @UpdateDateColumn()
     updatedAt!: string
   
-    @ManyToOne(() => Dossier, (dossier: Dossier) => dossier.files, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'bucket_id' })
+    @ManyToOne(() => Dossier, (dossier: Dossier) => dossier.id, { onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'dossier_id' })
     dossier!: Dossier
-  
+    
     /**
      * Methods
      */

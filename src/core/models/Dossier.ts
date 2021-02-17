@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -23,19 +24,19 @@ export default class Dossier extends BaseEntity {
   @Column({ nullable: false })
   name!: string
 
-  @OneToMany(() => File, (file :File )=> file.dossier)
-  @Column("text",{ nullable : true, array : true})
-  files!: Blob[];
-
   @CreateDateColumn()
   createdAt!: string
 
   @UpdateDateColumn()
   updatedAt!: string
 
-  @ManyToOne(() => User, (user: User) => user.bucket, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user: User) => user.dossier, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user!: User
+
+  @OneToMany(() => File, (file: File) => file.dossier, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'file_id' })
+  file!: File[]
 
   /**
    * Methods

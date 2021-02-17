@@ -4,7 +4,8 @@ import { error, success } from '@/core/helpers/response'
 import { BAD_REQUEST, OK } from '@/core/constants/api'
 import User from '../models/User'
 import bcrypt from 'bcryptjs'
-import { sendPasswordModif } from '../mail'
+import { sendSuppression } from '@/core/mail'
+import { use } from 'passport'
 
 
 
@@ -50,9 +51,15 @@ api.put('/:id', async (req: Request, res: Response) => {
 api.delete('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    await User.delete({ id: id })
-
+    const user = await User.findOne({ where: { id } })
+    const username = user?.username
+    const mail = user?.mail
+    if (username !== undefined && mail !== undefined) {
+      await sendSuppression(mail, { username })
+      await User.delete({ id: id })
+    }
     res.status(OK.status).json({ delete: 'OK' })
+
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
   }

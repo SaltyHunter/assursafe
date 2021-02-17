@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -11,6 +12,7 @@ import {
 } from 'typeorm'
 import bcrypt from 'bcryptjs'
 import Bucket from './Dossier'
+import Dossier from './Dossier'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -41,8 +43,9 @@ export default class User extends BaseEntity {
   @UpdateDateColumn()
   updatedAt!: string
 
-  @OneToMany(() => Bucket, (bucket: Bucket) => bucket.user)
-  bucket!: Bucket[]
+  @OneToMany(() => Dossier, (dossier: Dossier) => dossier.user)
+  dossier!: Dossier[]
+  
   /**
    * Hooks
    */

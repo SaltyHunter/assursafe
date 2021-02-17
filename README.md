@@ -1,4 +1,4 @@
-# patchakwak's API Version BETA 0.3
+# patchakwak's API Version BETA 0.4
 
 Configuration du .env : 
 
