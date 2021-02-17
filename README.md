@@ -1,4 +1,12 @@
-# patchakwak's API Version BETA 0.2
+# patchakwak's API Version BETA 0.3
+
+Configuration du .env : 
+
+HOST=
+PORT=
+DATABASE_URL=
+JWT_ENCRYPTION=
+SENDGRID_API_KEY=
 
 # Authentification : 
 

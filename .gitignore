@@ -112,6 +112,4 @@ temp/
 
 .vscode
 .dist
-.database.env
-docker-cmd.txt
 yarn-error.log

@@ -37,21 +37,21 @@ export async function sendConfirmation(
     to: string,
     options: { username: string },
 ): Promise<boolean> {
-    return send(to, 'Account successfully created', confirmation(options));
+    return send(to, 'AssurSafe, compte créé', confirmation(options));
 }
 
 export async function sendPasswordReset(
     to: string,
-    options: { nickname: string; token: string },
+    options: { username: string; token: string },
 ): Promise<boolean> {
-    return send(to, 'Reset your password', passwordReset(options));
+    return send(to, 'AssurSafe, réinitialisez votre mot de passe', passwordReset(options));
 }
 
 export async function sendPasswordModif(
     to: string,
-    options: { nickname: string },
+    options: { username: string },
 ): Promise<boolean> {
-    return send(to, 'Password changed', passwordModif(options));
+    return send(to, 'AssurSafe, votre mot de passe a bien été changé', passwordModif(options));
 }
 
 export default {

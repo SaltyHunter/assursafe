@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Router, Request, Response } from 'express'
 import auth from '@/core/controller/authenticate'
 import secured from './secured'
@@ -7,10 +8,10 @@ const api = Router()
 
 api.get('/', (req: Request, res: Response) => {
   res.json({
-    hello: 'From my-s3 Api',
+    hello: "From patchakwak's Api",
     meta: {
       status: 'running',
-      version: '1.0.0',
+      version: 'BETA 0.3',
     },
   })
 })

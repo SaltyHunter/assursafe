@@ -8,11 +8,11 @@ function confirmation({ username }: { username: string }): string {
           <mj-body>
             <mj-section>
               <mj-column>
-                <mj-text font-size="24px" font-weight="bold" color="#2386C8" font-family="helvetica">
+                <mj-text font-size="24px" font-weight="bold" color="rgba(101,225,87,1)" font-family="helvetica">
                   Bienvenue sur AssurSafe : ${username}!
                 </mj-text>
-                <mj-text font-size="20px" color="#2386C8" font-family="helvetica">
-                  Votre compte à bien été créer !
+                <mj-text font-size="20px" color="rgba(101,225,87,1)" font-family="helvetica">
+                  Votre compte à bien été créé !
                 </mj-text>
               </mj-column>
             </mj-section>
