@@ -12,7 +12,7 @@ function pwReset({ username, token }: { username: string; token: string }): stri
                 Bonjour ${username} !
               </mj-text>
               <mj-text font-size="20px" color="rgba(101,225,87,1)" font-family="helvetica">
-                Vous pouvez réinitialiser votre mot de passe ici : $(url)
+                Vous pouvez réinitialiser votre mot de passe ici : $(url) et votre ${token}
               </mj-text>
             </mj-column>
           </mj-section>

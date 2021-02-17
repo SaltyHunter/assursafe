@@ -21,7 +21,7 @@ api.get('/:id', async (req: Request, res: Response) => {
 })
 
 api.post('/', async (req: Request, res: Response) => {
-    const fields = ['name','mimetype','size','dossier','content']
+    const fields = ['name','mimetype','size','content']
   
     try {
       const missings = fields.filter((field: string) => !req.body[field])
@@ -48,7 +48,6 @@ api.post('/', async (req: Request, res: Response) => {
       file.name = name;
       file.mimetype = mimetype;
       file.size = size;
-      file.dossier = dossier;
       file.content = content;
       await file.save()
   
