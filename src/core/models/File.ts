@@ -29,6 +29,9 @@ import {
     @Column({ nullable: false })
     size!: number
 
+    @Column({ nullable: false ,unique: true })
+    content!: string
+
     @CreateDateColumn()
     createdAt!: string
   

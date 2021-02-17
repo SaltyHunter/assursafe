@@ -21,7 +21,7 @@ api.get('/:id', async (req: Request, res: Response) => {
 })
 
 api.post('/', async (req: Request, res: Response) => {
-    const fields = ['name','mimetype','size','dossier','path']
+    const fields = ['name','mimetype','size','dossier','content']
   
     try {
       const missings = fields.filter((field: string) => !req.body[field])
@@ -36,19 +36,20 @@ api.post('/', async (req: Request, res: Response) => {
       const dossier = await Dossier.findOne({ where: { id: dossierId } })
 
       if (!user) {
-        throw new Error(`User ${userId } doens't exist`)
+        throw new Error(`L'utilisateur ${userId } n'existe pas`)
       }
       if (!dossier) {
-        throw new Error(`Buck ${dossierId } doens't exist`)
+        throw new Error(`Le dossier ${dossierId } n'existe pas`)
       }
 
-      const { name, mimetype, size } = req.body
+      const { name, mimetype, size, content } = req.body
       const file = new File()
   
       file.name = name;
       file.mimetype = mimetype;
       file.size = size;
       file.dossier = dossier;
+      file.content = content;
       await file.save()
   
       res.status(CREATED.status).json(success(file))
@@ -61,11 +62,13 @@ api.post('/', async (req: Request, res: Response) => {
     try {
       const { id } = req.params
   
-      const { name, mimetype, size } = req.body
+      const { name, mimetype, size, content } = req.body
   
       await File.update({ id: id }, { name: name })
       await File.update({ id: id }, { mimetype: mimetype })
       await File.update({ id: id }, { size: size })
+      await File.update({ id: id }, { content: content })
+
 
       const file = await File.findOne({ where: { id: id } })
   
