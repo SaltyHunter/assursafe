@@ -103,7 +103,7 @@ LOCAL : Poster un fichier POST : http://localhost:8080/api/users/{uuid}/dossiers
 PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files
 
     {
-        "name":
+        "name":,
         "path":,
         "mimetype":,
         "dossier":,
@@ -115,7 +115,7 @@ LOCAL : Modifier son fichier PUT : http://localhost:8080/api/users/{uuid}/dossie
 PROD : Modifier son fichier PUT : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
     {
-        "name":
+        "name":,
         "path":,
         "mimetype":,
         "dossier":,
