@@ -2,8 +2,6 @@
 
 # Configuration du .env
 
-Configuration du .env : 
-
 HOST=
 
 PORT=
