@@ -20,12 +20,12 @@ api.get('/', async (req: Request, res: Response) => {
   try {
     const dossier = await Dossier.find({ where: { user_id : userId } })
     res.status(OK.status).json(dossier)
-    logger.info("Consultation des dossier de l'utilisateur "+userId)
-    log.info("Consultation des dossier de l'utilisateur "+userId)
+    logger.info("Consultation des dossiers de l'utilisateur "+userId)
+    log.info("Consultation des dossiers de l'utilisateur "+userId)
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
-    logger.error(err.message+" pour les dossier de l'utilisateur "+userId)
-    log.error(err.message+" pour les dossier de l'utilisateur "+userId)
+    logger.error(err.message+" pour les dossiers de l'utilisateur "+userId)
+    log.error(err.message+" pour les dossiers de l'utilisateur "+userId)
   }
 })
 

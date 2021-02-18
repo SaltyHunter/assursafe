@@ -20,16 +20,13 @@ import {
     @Column({ nullable: false })
     dossier_id!: string
 
-    @Column({ nullable: false ,unique: true })
-    name!: string
-
     @Column({ nullable: false })
     mimetype!: string
 
     @Column({ nullable: false })
-    size!: number
+    path!: string
 
-    @Column({ nullable: false })
+    @Column({ nullable: true })
     content!: string
 
     @CreateDateColumn()

@@ -1,4 +1,4 @@
-# patchakwak's API Version BETA 0.5
+# patchakwak's API Version BETA 0.5.1
 
 # Configuration du .env
 
@@ -104,20 +104,19 @@ PROD : Supprimer son dossier DELETE : https://patchakwak.herokuapp.com/api/users
 
 # Fichier :
 
-LOCAL : Voir un fichier GET : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
+LOCAL : Voir ses fichiers GET : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files
 
-PROD : Voir un fichier GET : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
+PROD : Voir ses fichiers GET : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files
 
 LOCAL : Poster un fichier POST : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files
 
 PROD : Poster un fichier POST : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files
 
     {
-        "name":,
+        "path":,
         "mimetype":,
         "content";,
-        "dossier":,
-        "size":
+        "dossier":
     }
 
 LOCAL : Modifier son fichier PUT : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
@@ -125,11 +124,10 @@ LOCAL : Modifier son fichier PUT : http://localhost:8080/api/users/{uuid}/dossie
 PROD : Modifier son fichier PUT : https://patchakwak.herokuapp.com/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}
 
     {
-        "name":,
+        "path":,
         "mimetype":,
         "content";,
-        "dossier":,
-        "size":
+        "dossier":
     }
     
 LOCAL : Supprimer son fichier DELETE : http://localhost:8080/api/users/{uuid}/dossiers/{id_dossier}/files/{id_file}

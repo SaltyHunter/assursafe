@@ -15,22 +15,24 @@ const logger = getLogger(file)
 const log = factory.getLogger("file.ts");
 const api = Router({ mergeParams: true })
 
-api.get('/:id', async (req: Request, res: Response) => {
-  const { id } = req.params
+api.get('/', async (req: Request, res: Response) => {
+  //const { id } = req.params
+  const { dossierId, userId } = req.params
+  console.log(dossierId)
   try {
-    const file = await File.findOne({ where: { id: id } })
-    res.status(OK.status).json(success(file))
-    logger.info("Consultation du fichier "+id)
-    log.info("Consultation du fichier "+id)
+    const fichier = await File.find({ where: { dossier_id : dossierId }})
+    res.status(OK.status).json(fichier)
+    logger.info("Consultation des fichier du dossier "+dossierId+" de l'utilisateur "+userId)
+    log.info("Consultation des fichier du dossier "+dossierId+" de l'utilisateur "+userId)
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
-    logger.error(err.message+" pour le fichier "+id)
-    log.error(err.message+" pour le fichier "+id)
+    logger.error(err.message+" pour les fichiers du dossier "+dossierId+" de l'utilisateur "+userId)
+    log.error(err.message+" pour les fichiers du dossier "+dossierId+" de l'utilisateur "+userId)
   }
-})
+});
 
 api.post('/', async (req: Request, res: Response) => {
-    const fields = ['name','mimetype','size','content']
+    const fields = ['mimetype','path','content']
     const { userId, dossierId  } = req.params
     try {
       const missings = fields.filter((field: string) => !req.body[field])
@@ -50,13 +52,12 @@ api.post('/', async (req: Request, res: Response) => {
         throw new Error(`Le dossier ${dossierId } n'existe pas`)
       }
 
-      const { name, mimetype, size, content } = req.body
+      const { path, mimetype, content } = req.body
       const file = new File()
   
-      file.name = name;
+      file.path = path;
       file.dossier = dossier;
       file.mimetype = mimetype;
-      file.size = size;
       file.content = content;
       await file.save()
   
@@ -74,11 +75,10 @@ api.post('/', async (req: Request, res: Response) => {
     const { id } = req.params
     try {
   
-      const { name, mimetype, size, content } = req.body
+      const { path, mimetype, content } = req.body
   
-      await File.update({ id: id }, { name: name })
+      await File.update({ id: id }, { path: path })
       await File.update({ id: id }, { mimetype: mimetype })
-      await File.update({ id: id }, { size: size })
       await File.update({ id: id }, { content: content })
 
 
