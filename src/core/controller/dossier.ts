@@ -80,6 +80,9 @@ api.delete('/:id', async (req: Request, res: Response) => {
   try {
     await Dossier.delete({ id: id })
     res.status(OK.status).json({ delete: 'OK' })
+    logger.info("Suppression effectué pour le dossier "+id)
+    log.info("Suppression effectué pour le dossier "+id)
+
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
     logger.error(err.message+" pour le dossier "+id)
