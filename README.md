@@ -1,4 +1,4 @@
-# patchakwak's API Version BETA 0.5.1
+# patchakwak's API Version 1.0.0
 
 # Configuration du .env
 
@@ -20,9 +20,7 @@ Envoie de mail lors de la création d'un utilisateur, et suppression d'un utilis
 
 - Configuration des logs sur le terminal de commande via log.ts
 
-- Configuration du fichier de log (api.log) via log4j.ts
-
-Les logs remontent toutes les informations nécessaires des appels.
+- Configuration du fichier de log (/log/api.log) via log4j.ts
 
 Utilisation d'un fonction "transform" dans utils.ts pour indiquer l'emplacement de l'info, erreur etc...
 

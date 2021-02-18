@@ -52,8 +52,8 @@ api.post('/', async (req: Request, res: Response) => {
     dossier.name = name
     await dossier.save()
     res.status(CREATED.status).json(success(dossier))
-    logger.info("Dossier créé pour l'utilisateur "+userId)
-    log.info("Dossier créé pour l'utilisateur "+userId)
+    logger.info("Dossier "+dossier.id+" créé pour l'utilisateur "+userId)
+    log.info("Dossier "+dossier.id+" créé pour l'utilisateur "+userId)
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
     logger.error(err.message)

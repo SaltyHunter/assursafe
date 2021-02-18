@@ -21,6 +21,7 @@ api.get('/:id', async (req: Request, res: Response) => {
     res.status(OK.status).json(success(user))
     logger.info("Consultation du profil utilisateur "+id)
     log.info("Consultation du profil utilisateur "+id)
+    console.log(log)
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
     logger.error(err.message+" pour l'utilisateur "+id)
@@ -55,6 +56,7 @@ api.put('/:id', async (req: Request, res: Response) => {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
     logger.error(err.message+" pour l'utilisateur "+id)
     log.error(err.message+" pour l'utilisateur "+id)
+
   }
 })
 

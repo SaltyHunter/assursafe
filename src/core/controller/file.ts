@@ -16,9 +16,7 @@ const log = factory.getLogger("file.ts");
 const api = Router({ mergeParams: true })
 
 api.get('/', async (req: Request, res: Response) => {
-  //const { id } = req.params
   const { dossierId, userId } = req.params
-  console.log(dossierId)
   try {
     const fichier = await File.find({ where: { dossier_id : dossierId }})
     res.status(OK.status).json(fichier)
@@ -62,8 +60,8 @@ api.post('/', async (req: Request, res: Response) => {
       await file.save()
   
       res.status(CREATED.status).json(success(file))
-      logger.info("Fichier créé pour le dossier "+dossierId+" de l'utilisateur "+userId)
-      log.info("Fichier créé pour le dossier "+dossierId+" de l'utilisateur "+userId)
+      logger.info("Fichier "+file.id+"créé pour le dossier "+dossierId+" de l'utilisateur "+userId)
+      log.info("Fichier "+file.id+"créé pour le dossier "+dossierId+" de l'utilisateur "+userId)
     } catch (err) {
       res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
       logger.error(err.message)
