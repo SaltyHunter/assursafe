@@ -29,7 +29,7 @@ import {
     @Column({ nullable: false })
     size!: number
 
-    @Column({ nullable: false ,unique: true })
+    @Column({ nullable: false })
     content!: string
 
     @CreateDateColumn()

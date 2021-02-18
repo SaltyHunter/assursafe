@@ -6,23 +6,32 @@ import { BAD_REQUEST, CREATED, OK } from '@/core/constants/api'
 import User from '@/core/models/User'
 import Dossier from '@/core/models/Dossier'
 import File from '@/core/models/File'
+import { factory } from '@/core/libs/log'
+import { getLogger } from 'log4js'
+import { transform } from '@/core/libs/utils'
 
+const file = transform(__filename)
+const logger = getLogger(file)
+const log = factory.getLogger("file.ts");
 const api = Router({ mergeParams: true })
 
 api.get('/:id', async (req: Request, res: Response) => {
+  const { id } = req.params
   try {
-    const { id } = req.params
-
     const file = await File.findOne({ where: { id: id } })
     res.status(OK.status).json(success(file))
+    logger.info("Consultation du fichier "+id)
+    log.info("Consultation du fichier "+id)
   } catch (err) {
     res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
+    logger.error(err.message+" pour le fichier "+id)
+    log.error(err.message+" pour le fichier "+id)
   }
 })
 
 api.post('/', async (req: Request, res: Response) => {
     const fields = ['name','mimetype','size','content']
-  
+    const { userId, dossierId  } = req.params
     try {
       const missings = fields.filter((field: string) => !req.body[field])
   
@@ -31,7 +40,6 @@ api.post('/', async (req: Request, res: Response) => {
         throw new Error(`Field${isPlural ? 's' : ''} [ ${missings.join(', ')} ] ${isPlural ? 'are' : 'is'} missing`)
       }
   
-      const { userId, dossierId  } = req.params
       const user = await User.findOne({ where: { id: userId } })
       const dossier = await Dossier.findOne({ where: { id: dossierId } })
 
@@ -53,14 +61,18 @@ api.post('/', async (req: Request, res: Response) => {
       await file.save()
   
       res.status(CREATED.status).json(success(file))
+      logger.info("Fichier créé pour le dossier "+dossierId+" de l'utilisateur "+userId)
+      log.info("Fichier créé pour le dossier "+dossierId+" de l'utilisateur "+userId)
     } catch (err) {
       res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
+      logger.error(err.message)
+      log.error(err.message)
     }
   })
   
   api.put('/:id', async (req: Request, res: Response) => {
+    const { id } = req.params
     try {
-      const { id } = req.params
   
       const { name, mimetype, size, content } = req.body
   
@@ -73,20 +85,27 @@ api.post('/', async (req: Request, res: Response) => {
       const file = await File.findOne({ where: { id: id } })
   
       res.status(OK.status).json(success(file))
+      logger.info("Modification effectué pour le fichier "+id)
+      log.info("Modification effectué pour le fichier "+id)
     } catch (err) {
       res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
+      logger.error(err.message+" pour le fichier "+id)
+      log.error(err.message+" pour le fichier "+id)
     }
   })
   
   api.delete('/:id', async (req: Request, res: Response) => {
+    const { id } = req.params
     try {
-      const { id } = req.params
       await File.delete({ id: id })
-  
       res.status(OK.status).json({ delete: 'OK' })
+      logger.info("Suppression effectué pour le fichier "+id)
+      log.info("Suppression effectué pour le fichier "+id)
+
     } catch (err) {
       res.status(BAD_REQUEST.status).json(error(BAD_REQUEST, err))
-    }
+      logger.error(err.message+" pour le fichier "+id)
+      log.error(err.message+" pour le fichier "+id)}
   })
   
 export default api

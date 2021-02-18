@@ -1,4 +1,4 @@
-# patchakwak's API Version BETA 0.4
+# patchakwak's API Version BETA 0.5
 
 # Configuration du .env
 
@@ -15,6 +15,16 @@ SENDGRID_API_KEY=
 # Gestion des mails : SENDGRID :
 
 Envoie de mail lors de la création d'un utilisateur, et suppression d'un utilisateur.
+
+# Log (log4j):
+
+- Configuration des logs sur le terminal de commande via log.ts
+
+- Configuration du fichier de log (api.log) via log4j.ts
+
+Les logs remontent toutes les informations nécessaires des appels.
+
+Utilisation d'un fonction "transform" dans utils.ts pour indiquer l'emplacement de l'info, erreur etc...
 
 # Authentification : 
 
