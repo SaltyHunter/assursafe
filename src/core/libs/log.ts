@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {LoggerFactory, LoggerFactoryOptions, LFService, LogGroupRule, LogLevel} from "typescript-logging";
+import {LoggerFactoryOptions, LFService, LogGroupRule, LogLevel} from "typescript-logging";
  
 // Create options instance and specify 2 LogGroupRules:
 // * One for any logger with a name starting with model, to log on debug
