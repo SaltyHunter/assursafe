@@ -1,4 +1,4 @@
-# patchakwak's API Version 1.0.1
+# AssurSafe's API Version 1.0.1
 
 # Configuration du .env
 
