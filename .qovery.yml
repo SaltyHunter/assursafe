@@ -1,0 +1,15 @@
+---
+application:
+  name: "assursafe"
+  project: "Patchakwak"
+  organization: "QoveryCommunity"
+databases:
+- type: "POSTGRESQL"
+  name: "assursafe"
+  version: "12"
+routers:
+- name: "main-assursafe"
+  routes:
+  - application_name: "assursafe"
+    paths:
+    - "/*"
